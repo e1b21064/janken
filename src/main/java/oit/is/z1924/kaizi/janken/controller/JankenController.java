@@ -98,5 +98,14 @@ public class JankenController {
     return "sample24.html";
   }
 
+  /**
+   * @param user
+   * @return
+   */
+  @PostMapping("/janken")
+  public String janken(@RequestParam String user) {
+    return "janken.html";
+  }
+
 
 }

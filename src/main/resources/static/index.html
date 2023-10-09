@@ -8,6 +8,17 @@
 
 <body>
   <a href="/janken">jankenへのGETをリクエスト</a><br>
+
+  <p>
+    <!--form actionが処理を渡す先を示す
+        input nameがパラメータ名を表している
+      この場合，kakeru1,kakeru2の2つの変数が/sample25にpost メソッドで渡される-->
+  <form action="/janken" method="post">
+    <input type="text" name="user"/>
+    <input type="submit" value="入室">
+  </form>
+  </p>
+
 </body>
 
 </html>
