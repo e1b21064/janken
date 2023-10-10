@@ -24,8 +24,12 @@ public class JankenController {
     return "index.html";
   }
 
-  @GetMapping("/janken")
-  public String janken() {
+  /**
+   * @param user
+   * @return
+   */
+  @PostMapping("/janken")
+  public String janken(@RequestParam String user) {
     return "janken.html";
   }
 
@@ -97,15 +101,5 @@ public class JankenController {
     model.addAttribute("kakeruResult", kakeruResult);
     return "sample24.html";
   }
-
-  /**
-   * @param user
-   * @return
-   */
-  @PostMapping("/janken")
-  public String janken(@RequestParam String user) {
-    return "janken.html";
-  }
-
 
 }
