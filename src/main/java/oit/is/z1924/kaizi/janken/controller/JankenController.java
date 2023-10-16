@@ -1,5 +1,7 @@
 package oit.is.z1924.kaizi.janken.controller;
 
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,18 @@ public class JankenController {
   @GetMapping("/index")
   public String index() {
     return "index.html";
+  }
+
+  /**
+   *
+   * @param model Thymeleafにわたすデータを保持するオブジェクト
+   * @param prin  ログインユーザ情報が保持されるオブジェクト
+   * @return
+   */
+
+  @GetMapping("/janken")
+  public String janken() {
+    return "janken.html";
   }
 
   /**
