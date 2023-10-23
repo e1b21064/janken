@@ -60,11 +60,21 @@ public class JankenController {
    * @return
    */
 
-  @GetMapping("step8")
+  @GetMapping("janken/step8")
   public String sample38(Principal prin, ModelMap model) {
     String loginUser = prin.getName();
     this.room.addUser(loginUser);
     model.addAttribute("room", this.room);
+
+    return "janken.html";
+  }
+
+  @GetMapping("janken/step9")
+  public String sample39(Principal prin, ModelMap model) {
+    String loginUser = prin.getName();
+    Entry newRoom = new Entry();
+    newRoom.addUser(loginUser);
+    model.addAttribute("new_room", newRoom);
 
     return "janken.html";
   }
