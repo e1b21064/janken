@@ -1,6 +1,7 @@
 package oit.is.z1924.kaizi.janken.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import oit.is.z1924.kaizi.janken.model.Entry;
+import oit.is.z1924.kaizi.janken.model.User;
+import oit.is.z1924.kaizi.janken.model.UserMapper;
 
 /**
  * Sample21Controller
@@ -76,6 +79,18 @@ public class JankenController {
     newRoom.addUser(loginUser);
     model.addAttribute("new_room", newRoom);
 
+    return "janken.html";
+  }
+
+  @GetMapping("janken/step5")
+  public String sample45() {
+    return "janken.html";
+  }
+
+  @PostMapping("janken/step5")
+  public String sample45(@RequestParam String chamberName, ModelMap model) {
+    ArrayList<User> chambers5 = UserMapper.selectAllByChamberName(chamberName);
+    model.addAttribute("chambers5", chambers5);
     return "janken.html";
   }
 
