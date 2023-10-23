@@ -7,16 +7,18 @@
 </head>
 
 <body>
-  <h1>Authorized! [[${login_user}]]</h1>
   <a href="/logout">ログアウト</a>
 
   <h1>
     Janken Game!
   </h1>
 
-  <p>
+  <div th:if="${room}">
     エントリー
-  </p>
+    <ul>
+      <li th:each="user : ${room.users}">[[${user}]]</li>
+    </ul>
+  </div>
 
 </body>
 
