@@ -10,11 +10,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import oit.is.z1924.kaizi.janken.model.Entry;
-import oit.is.z1924.kaizi.janken.model.User;
-import oit.is.z1924.kaizi.janken.model.UserMapper;
+//import oit.is.z1924.kaizi.janken.model.User;
+//import oit.is.z1924.kaizi.janken.model.UserMapper;
 
 /**
  * Sample21Controller
@@ -22,6 +23,7 @@ import oit.is.z1924.kaizi.janken.model.UserMapper;
  * クラスの前に@Controllerをつけていると，HTTPリクエスト（GET/POSTなど）があったときに，このクラスが呼び出される
  */
 @Controller
+@RequestMapping("/janken")
 public class JankenController {
 
   /**
@@ -31,13 +33,8 @@ public class JankenController {
   @Autowired
   private Entry room;
 
-  @Autowired
-  private UserMapper userMapper;
-
-  @GetMapping("/index")
-  public String index() {
-    return "index.html";
-  }
+  // @Autowired
+  // private UserMapper userMapper;
 
   /**
    *
@@ -46,8 +43,12 @@ public class JankenController {
    * @return
    */
 
-  @GetMapping("/janken")
-  public String janken() {
+  @GetMapping("step1")
+  public String sample38(Principal prin, ModelMap model) {
+    String loginUser = prin.getName();
+    this.room.addUser(loginUser);
+    model.addAttribute("room", this.room);
+
     return "janken.html";
   }
 
@@ -67,14 +68,6 @@ public class JankenController {
    * @return
    */
 
-  @GetMapping("janken/step8")
-  public String sample38(Principal prin, ModelMap model) {
-    String loginUser = prin.getName();
-    this.room.addUser(loginUser);
-    model.addAttribute("room", this.room);
-
-    return "janken.html";
-  }
 
   @GetMapping("janken/step9")
   public String sample39(Principal prin, ModelMap model) {
@@ -91,21 +84,25 @@ public class JankenController {
     return "janken.html";
   }
 
-  @PostMapping("janken/step5")
-  public String sample45(@RequestParam String chamberName, ModelMap model) {
-    ArrayList<User> chambers5 = userMapper.selectAllByChamberName(chamberName);
-    model.addAttribute("chambers5", chambers5);
-    return "janken.html";
-  }
+  /*
+   * @PostMapping("janken/step5")
+   * public String sample45(@RequestParam String chamberName, ModelMap model) {
+   * ArrayList<User> chambers5 = userMapper.selectAllByChamberName(chamberName);
+   * model.addAttribute("chambers5", chambers5);
+   * return "janken.html";
+   * }
+   */
 
   /*
-  @GetMapping("janken/step7")
-  @Transactional
-  public String sample47(ModelMap model) {
-    ArrayList<User> chamberUsers7 = userMapper.selectAllChamberUser();
-    model.addAttribute("chamberUsers7", chamberUsers7);
-    return "janken.html";
-  }
-  */
+   * @GetMapping("janken/step7")
+   *
+   * @Transactional
+   * public String sample47(ModelMap model) {
+   * ArrayList<User> chamberUsers7 = userMapper.selectAllChamberUser();
+   * model.addAttribute("chamberUsers7", chamberUsers7);
+   * return "janken.html";
+   * }
+   */
+
 
 }
