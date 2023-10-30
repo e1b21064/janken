@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import oit.is.z1924.kaizi.janken.model.Entry;
@@ -22,6 +23,7 @@ import oit.is.z1924.kaizi.janken.model.Entry;
  * クラスの前に@Controllerをつけていると，HTTPリクエスト（GET/POSTなど）があったときに，このクラスが呼び出される
  */
 @Controller
+@RequestMapping("/janken")
 public class JankenController {
 
   /**
@@ -34,11 +36,6 @@ public class JankenController {
   // @Autowired
   // private UserMapper userMapper;
 
-  @GetMapping("/index")
-  public String index() {
-    return "index.html";
-  }
-
   /**
    *
    * @param model Thymeleafにわたすデータを保持するオブジェクト
@@ -46,8 +43,12 @@ public class JankenController {
    * @return
    */
 
-  @GetMapping("/janken")
-  public String janken() {
+  @GetMapping("step1")
+  public String sample38(Principal prin, ModelMap model) {
+    String loginUser = prin.getName();
+    this.room.addUser(loginUser);
+    model.addAttribute("room", this.room);
+
     return "janken.html";
   }
 
@@ -67,14 +68,6 @@ public class JankenController {
    * @return
    */
 
-  @GetMapping("janken/step8")
-  public String sample38(Principal prin, ModelMap model) {
-    String loginUser = prin.getName();
-    this.room.addUser(loginUser);
-    model.addAttribute("room", this.room);
-
-    return "janken.html";
-  }
 
   @GetMapping("janken/step9")
   public String sample39(Principal prin, ModelMap model) {
@@ -102,7 +95,7 @@ public class JankenController {
 
   /*
    * @GetMapping("janken/step7")
-   * 
+   *
    * @Transactional
    * public String sample47(ModelMap model) {
    * ArrayList<User> chamberUsers7 = userMapper.selectAllChamberUser();
