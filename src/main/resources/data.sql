@@ -10,7 +10,7 @@ INSERT INTO matches (user1,user2,user1Hand,user2Hand) VALUES (2,1,'Gu','Pa');
 /*課題5*/
 INSERT INTO users (name) VALUES ('CPU');
 INSERT INTO users (name) VALUES ('ほんだ');
-INSERT INTO users (name) VALUES ('いがき')
+INSERT INTO users (name) VALUES ('いがき');
 INSERT INTO matches (user1,user2,user1Hand,user2Hand,isActive) VALUES (2,1,'Gu','Choki',FALSE);
 INSERT INTO matches (user1,user2,user1Hand,user2Hand,isActive) VALUES (2,1,'Gu','Gu',FALSE);
 INSERT INTO matches (user1,user2,user1Hand,user2Hand,isActive) VALUES (2,1,'Gu','Pa',FALSE);

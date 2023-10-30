@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import oit.is.z1924.kaizi.janken.model.Entry;
-import oit.is.z1924.kaizi.janken.model.User;
-import oit.is.z1924.kaizi.janken.model.UserMapper;
+//import oit.is.z1924.kaizi.janken.model.User;
+//import oit.is.z1924.kaizi.janken.model.UserMapper;
 
 /**
  * Sample21Controller
@@ -31,8 +31,8 @@ public class JankenController {
   @Autowired
   private Entry room;
 
-  @Autowired
-  private UserMapper userMapper;
+  // @Autowired
+  // private UserMapper userMapper;
 
   @GetMapping("/index")
   public String index() {
@@ -91,21 +91,24 @@ public class JankenController {
     return "janken.html";
   }
 
-  @PostMapping("janken/step5")
-  public String sample45(@RequestParam String chamberName, ModelMap model) {
-    ArrayList<User> chambers5 = userMapper.selectAllByChamberName(chamberName);
-    model.addAttribute("chambers5", chambers5);
-    return "janken.html";
-  }
+  /*
+   * @PostMapping("janken/step5")
+   * public String sample45(@RequestParam String chamberName, ModelMap model) {
+   * ArrayList<User> chambers5 = userMapper.selectAllByChamberName(chamberName);
+   * model.addAttribute("chambers5", chambers5);
+   * return "janken.html";
+   * }
+   */
 
   /*
-  @GetMapping("janken/step7")
-  @Transactional
-  public String sample47(ModelMap model) {
-    ArrayList<User> chamberUsers7 = userMapper.selectAllChamberUser();
-    model.addAttribute("chamberUsers7", chamberUsers7);
-    return "janken.html";
-  }
-  */
+   * @GetMapping("janken/step7")
+   * 
+   * @Transactional
+   * public String sample47(ModelMap model) {
+   * ArrayList<User> chamberUsers7 = userMapper.selectAllChamberUser();
+   * model.addAttribute("chamberUsers7", chamberUsers7);
+   * return "janken.html";
+   * }
+   */
 
 }

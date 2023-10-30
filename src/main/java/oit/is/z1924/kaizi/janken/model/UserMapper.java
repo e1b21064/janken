@@ -1,3 +1,4 @@
+/*
 package oit.is.z1924.kaizi.janken.model;
 
 import java.util.ArrayList;
@@ -17,3 +18,4 @@ public interface UserMapper {
   ArrayList<User> selectAllByChamberName(String chamberName);
 
 }
+*/
