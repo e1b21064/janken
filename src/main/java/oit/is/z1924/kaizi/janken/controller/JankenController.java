@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,9 @@ public class JankenController {
 
   @Autowired
   private Entry room;
+
+  @Autowired
+  private UserMapper userMapper;
 
   @GetMapping("/index")
   public String index() {
@@ -89,9 +93,19 @@ public class JankenController {
 
   @PostMapping("janken/step5")
   public String sample45(@RequestParam String chamberName, ModelMap model) {
-    ArrayList<User> chambers5 = UserMapper.selectAllByChamberName(chamberName);
+    ArrayList<User> chambers5 = userMapper.selectAllByChamberName(chamberName);
     model.addAttribute("chambers5", chambers5);
     return "janken.html";
   }
+
+  /*
+  @GetMapping("janken/step7")
+  @Transactional
+  public String sample47(ModelMap model) {
+    ArrayList<User> chamberUsers7 = userMapper.selectAllChamberUser();
+    model.addAttribute("chamberUsers7", chamberUsers7);
+    return "janken.html";
+  }
+  */
 
 }
